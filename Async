@@ -1,0 +1,31 @@
+private fun NewThread() {
+        runOnUiThread {
+            //TASK HERE
+            val handler = Handler()
+            try {
+                run {
+                    handler.postDelayed(Runnable {
+                        //OR HERE
+                    },1000)
+                }
+            } catch (ex: Exception) {
+                Log.i("---", "Exception in thread")
+            }
+        }
+    }
+-------------------------------------------------------------------------------------------------------------------------
+class doAsync(val handler: () -> Unit) : AsyncTask<Void, Void, Void>() {
+        init {
+            execute()
+        }
+
+        override fun doInBackground(vararg params: Void?): Void? {
+            handler()
+            return null
+        }
+    }
+    
+    doAsync{
+        //TASK HERE
+    }
+--------------------------------------------------------------------------------------------------------------------------
